@@ -2,6 +2,7 @@ package employeeWage;
 
 public class EmployeeWage {
 
+	static final int WORKING_DAYS_PER_M0NTH = 20;
 	static final int WAGE_PER_HOUR = 20;
 	static final int FULL_TIME_HOUR = 8;
 	static final int PART_TIME_HOUR = 4;
@@ -12,27 +13,28 @@ public class EmployeeWage {
 
 		System.out.println("welcome to Employee Wage");
 
-		int dailywage = 0;
-		int empcheck = (int) Math.floor(Math.random() * 10) % 2;
-		if (empcheck == 1) {
-			System.out.println("Employee is Present");
-			int empcheck1 = (int) Math.floor(Math.random() * 10) % 3;
-			if (empcheck1 == IS_FULL_TIME) {
+		int day = 1;
+		while (day <= WORKING_DAYS_PER_M0NTH) {
+			int dailywage = 0;
+			int empcheck = (int) Math.floor(Math.random() * 10) % 3;
+
+			switch (empcheck) {
+			case IS_FULL_TIME:
 				System.out.println("Employee Full Time");
 				dailywage = WAGE_PER_HOUR * FULL_TIME_HOUR;
-			} else if (empcheck1 == IS_PART_TIME) {
+				break;
+			case IS_PART_TIME:
 				System.out.println("Employee Part Time");
 				dailywage = WAGE_PER_HOUR * PART_TIME_HOUR;
-			} else {
+				break;
 
+			default:
 				System.out.println("Employee is Absent");
 			}
-			System.out.println("Daly Wage =>" + dailywage);
 
+			System.out.println("Daly Wage => " + dailywage);
+			day++;
 		}
 
-		System.out.println("Daly Wage => " + dailywage);
-
 	}
-
 }
